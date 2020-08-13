@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Grid, List, ListItem, ListItemIcon, ListItemText, Paper, TextField } from '@material-ui/core';
 import { filter_search } from "../api/utils"
 
+
 const useStyles = makeStyles((theme) => ({
 
     list: {
@@ -10,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: 360,
         backgroundColor: theme.palette.background.paper,
         overflowY: "scroll",
-        height: "82vh",
+        height: "calc(80vh - 7px)",
 
     },
     paper: {
@@ -29,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function CountriesMenu({ countries = [], filter = function () { }, controllers = {}, dimension }) {
+export default function CountriesMenu({ countries = [], filter = function () { }, controllers = {}, dimension, country }) {
     const classes = useStyles();
 
     return (
@@ -41,7 +42,7 @@ export default function CountriesMenu({ countries = [], filter = function () { }
                         {countries
                             .filter(({ Country }) => filter_search(Country, filter))
                             .map((current, key) => (
-                                <div onClick={() => controllers.select(current)} key={key}>
+                                <div onClick={() => controllers.select(current)} key={key} className={country.Slug === current.Slug ? "active" : ""}>
                                     <ListItem button >
                                         <ListItemIcon>
                                             <img
@@ -61,3 +62,6 @@ export default function CountriesMenu({ countries = [], filter = function () { }
 
     );
 }
+
+
+

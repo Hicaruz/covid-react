@@ -8,5 +8,10 @@ const get_countries = async () => {
     return sort(data, "Country")
 }
 
+const get_counntry_data = async (country = "") => {
+    const { data } = await axios.get(`/total/country/${country}`)
+    return data
+}
 
-export { get_countries }
+
+export { get_countries, get_counntry_data }

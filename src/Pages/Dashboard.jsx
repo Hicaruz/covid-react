@@ -3,7 +3,7 @@ import CountriesMenu from "../Components/Menu"
 import Country from "../Components/Country_info"
 import Map from "../Components/Map"
 import { Grid } from '@material-ui/core';
-
+import SocialMedia from "../Components/SocialMedia"
 
 class Dashboard extends Component {
     constructor(props) {
@@ -29,20 +29,18 @@ class Dashboard extends Component {
         this.setState({ filter_country })
     }
     controllerSelect(selected) {
-        const self = this
         const current = this.state.current_country
         if (!current.Slug) {
             this.setState({ current_country: selected })
             this.swapDimensions()
             return;
         } else if (current.Slug === selected.Slug) {
+            this.setState({ current_country: {} })
             this.swapDimensions()
             return;
 
         }
-        this.swapDimensions()
         this.setState({ current_country: selected })
-        setTimeout(() => self.swapDimensions(), 500)
 
 
     }
@@ -69,6 +67,8 @@ class Dashboard extends Component {
                             filter={self.filter_country}
                             controllers={controllers}
                             dimension={self.dimensions}
+                            country={self.current_country}
+
                         />
                         <Map dimension={self.dimensions} />
                         <Country
@@ -78,6 +78,10 @@ class Dashboard extends Component {
 
                     </Grid>
                 </div>
+                <div className="social-container">
+                    <SocialMedia/>
+                </div>
+
             </>
         )
     }
