@@ -12,12 +12,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function Country(props) {
     const classes = useStyles();
-    const checked = props.dimension.center === 6
+    const checked = props.dimension.center === 3
     const { country: current } = props
     return (
 
-        <Slide direction="left" in={checked} mountOnEnter unmountOnExit>
-            <Grid item xs={12} md={props.dimension.siders}>
+        <Slide direction="up" in={checked} mountOnEnter unmountOnExit>
+            <Grid item xs={12} md={props.dimension.right}>
                 <Paper className={classes.paper}>
                     <div className="title-country">
                         {current.Country}

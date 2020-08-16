@@ -34,7 +34,8 @@ export default function CountriesMenu({ countries = [], filter = function () { }
     const classes = useStyles();
 
     return (
-        <Grid item xs={12} md={dimension.siders}>
+
+        <Grid item xs={12} md={dimension.left}>
             <Paper className={classes.paper}>
                 <TextField label="Search country" className={classes.textField} onChange={controllers.filter} />
                 <div className={classes.list}>
@@ -59,6 +60,7 @@ export default function CountriesMenu({ countries = [], filter = function () { }
                 </div>
             </Paper>
         </Grid>
+
 
     );
 }

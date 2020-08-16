@@ -15,7 +15,8 @@ class Dashboard extends Component {
             current_country: {},
             dimensions: {
                 center: 9,
-                siders: 3
+                left: 3,
+                right: 6
             }
         }
 
@@ -46,7 +47,7 @@ class Dashboard extends Component {
     }
     swapDimensions() {
         const { dimensions } = this.state
-        dimensions.center = dimensions.center === 9 ? 6 : 9
+        dimensions.center = dimensions.center === 9 ? 3 : 9
         this.setState({ dimensions })
     }
 
@@ -62,6 +63,7 @@ class Dashboard extends Component {
             <>
                 <div className="root-container">
                     <Grid container spacing={3}>
+                        
                         <CountriesMenu
                             countries={self.countries}
                             filter={self.filter_country}
@@ -70,11 +72,12 @@ class Dashboard extends Component {
                             country={self.current_country}
 
                         />
-                        <Map dimension={self.dimensions} />
                         <Country
                             country={self.current_country}
                             dimension={self.dimensions}
                         />
+                        <Map dimension={self.dimensions} />
+                        
 
                     </Grid>
                 </div>
